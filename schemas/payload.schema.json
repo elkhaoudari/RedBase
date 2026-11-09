@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redbase.invalid/schemas/payload.schema.json",
+  "title": "RedBase Payload Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "schema_version",
+    "technique_id",
+    "name",
+    "content",
+    "target_technology",
+    "injection_context",
+    "encoding",
+    "expected_behavior",
+    "review",
+    "source",
+    "license"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "technique_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 2
+    },
+    "content": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_technology": {
+      "type": "string"
+    },
+    "technology_versions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "injection_context": {
+      "type": "string"
+    },
+    "encoding": {
+      "type": "string"
+    },
+    "expected_behavior": {
+      "type": "string",
+      "minLength": 5
+    },
+    "waf_bypass_for": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_payload": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "last_tested",
+        "tested_against",
+        "evidence"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "unverified",
+            "reviewed",
+            "verified",
+            "deprecated"
+          ]
+        },
+        "last_tested": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "tested_against": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source": {
+      "enum": [
+        "original",
+        "adapted"
+      ]
+    },
+    "adapted_from": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "license": {
+      "type": "string",
+      "minLength": 2
+    }
+  }
+}

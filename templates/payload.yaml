@@ -1,0 +1,21 @@
+id: web-example-payload-001
+schema_version: 1
+technique_id: web-injection-example-technique
+name: "Example payload record"
+content: "REPLACE_WITH_CONTENT"
+target_technology: unspecified
+technology_versions: []
+injection_context: unspecified
+encoding: none
+expected_behavior: "Describe the expected behavior and conditions."
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references: []
+source: original
+adapted_from: null
+license: CC-BY-4.0

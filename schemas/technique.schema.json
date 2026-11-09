@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redbase.invalid/schemas/technique.schema.json",
+  "title": "RedBase Technique Metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "schema_version",
+    "name",
+    "domain",
+    "category",
+    "subcategory",
+    "description",
+    "maturity",
+    "review",
+    "source",
+    "license"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "domain": {
+      "enum": [
+        "web",
+        "api"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "minLength": 2
+    },
+    "subcategory": {
+      "type": "string",
+      "minLength": 2
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cwe": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "owasp": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "target_technologies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "technology_versions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "payload_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "uniqueItems": true
+    },
+    "related_techniques": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "maturity": {
+      "enum": [
+        "core",
+        "advanced",
+        "research"
+      ]
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "last_tested",
+        "tested_against",
+        "evidence"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "unverified",
+            "reviewed",
+            "verified",
+            "deprecated"
+          ]
+        },
+        "last_tested": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "tested_against": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "source": {
+      "enum": [
+        "original",
+        "adapted"
+      ]
+    },
+    "adapted_from": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "license": {
+      "type": "string",
+      "minLength": 2
+    }
+  }
+}

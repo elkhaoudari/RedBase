@@ -1,0 +1,26 @@
+id: web-injection-example-technique
+schema_version: 1
+name: "Example technique"
+aliases: []
+domain: web
+category: injection
+subcategory: example
+description: "Replace with a concise factual description."
+classification:
+  cwe: []
+  owasp: []
+target_technologies: []
+technology_versions: []
+requirements: []
+payload_refs: []
+related_techniques: []
+tags: []
+maturity: core
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+source: original
+adapted_from: null
+license: CC-BY-4.0

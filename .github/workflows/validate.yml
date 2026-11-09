@@ -1,0 +1,25 @@
+name: Validate RedBase
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Validate records
+        run: python scripts/validators/validate.py
+      - name: Build index
+        run: python scripts/generators/build_index.py
+      - name: Ensure generated index is up to date
+        run: git diff --exit-code -- generated/index.json
