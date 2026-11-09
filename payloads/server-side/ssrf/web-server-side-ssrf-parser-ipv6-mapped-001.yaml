@@ -1,0 +1,23 @@
+id: web-server-side-ssrf-parser-ipv6-mapped-001
+schema_version: 1
+technique_id: web-server-side-ssrf-parser-confusion
+name: IPv6-mapped IPv4 literal
+content: "http://[<ipv6-mapped-ip>]/"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: Substitute an IPv4 address expressed in IPv4-mapped IPv6 form. An allowlist or denylist that operates on dotted-quad strings does not recognise the mapped form, while the client may resolve it to the equivalent IPv4 address. Behaviour depends on whether the client and the operating system accept mapped literals.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://www.rfc-editor.org/rfc/rfc4291
+  - https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: "pending-policy-review"

@@ -91,6 +91,12 @@ def main():
         if data.get("technique_id") not in technique_ids:
             errors.append(f"{label}: unknown technique_id {data.get('technique_id')}")
 
+    for path, data in payloads:
+        label = str(path.relative_to(ROOT))
+        ref = data.get("related_payload")
+        if ref is not None and ref not in payload_ids:
+            errors.append(f"{label}: unknown related_payload {ref}")
+
     for path, data in techniques:
         label = str(path.relative_to(ROOT))
         for ref in data.get("related_techniques", []):

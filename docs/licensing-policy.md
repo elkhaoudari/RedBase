@@ -15,3 +15,7 @@ Third-party material:
 - If license compatibility or redistribution rights are unclear, link to the source instead of copying its content.
 
 A repository-level license does not override file-level third-party licenses. Keep `NOTICE` current.
+
+Payload records follow the documentation/provenance rules in
+`docs/payload-standard.md`. A record marked `pending-policy-review` is provisional
+and must have its license resolved before release; this value is not a license.

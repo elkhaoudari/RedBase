@@ -1,0 +1,23 @@
+id: web-server-side-ssrf-parser-decimal-001
+schema_version: 1
+technique_id: web-server-side-ssrf-parser-confusion
+name: Decimal-encoded IPv4 host
+content: "http://<ip-decimal>/"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: Substitute the target IPv4 address expressed as a single 32-bit unsigned integer in decimal. Whether the client accepts this form depends on its host parser; some clients resolve it, others reject it. Validators that require a dotted-quad string will not recognise the value as a host.
+waf_bypass_for: []
+related_payload: web-server-side-ssrf-parser-octal-001
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://www.rfc-editor.org/rfc/rfc3986
+  - https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: "pending-policy-review"

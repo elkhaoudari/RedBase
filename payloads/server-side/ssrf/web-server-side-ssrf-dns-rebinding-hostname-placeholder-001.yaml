@@ -1,0 +1,37 @@
+id: web-server-side-ssrf-dns-rebinding-hostname-placeholder-001
+schema_version: 1
+technique_id: web-server-side-ssrf-dns-rebinding
+name: Hostname under authoritative-DNS control
+content: "http://<rebinding-hostname>/"
+target_technology: dns
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: |
+  Substitute a hostname whose authoritative nameserver is under tester control
+  and configured with a low TTL and alternating answers between an allowed
+  address and a forbidden one.
+
+  The test succeeds if the validator resolves the allowed address and approves
+  the URL, and the fetch client then re-resolves the hostname within the TTL
+  window and reaches the forbidden address. Success is evidenced by a callback
+  or response from the forbidden destination.
+
+  This record documents the shape of the input; the mechanism itself is
+  infrastructure (authoritative nameserver, TTL, alternating records) rather
+  than a string. Many clients pin DNS for the duration of a request, defeating
+  the technique entirely. Treat a single failure as inconclusive.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://cwe.mitre.org/data/definitions/918.html
+  - https://www.rfc-editor.org/rfc/rfc1034
+  - https://www.rfc-editor.org/rfc/rfc1035
+source: original
+adapted_from: null
+license: "pending-policy-review"

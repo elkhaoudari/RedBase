@@ -1,0 +1,25 @@
+id: web-server-side-ssrf-blind-webhook-callback-001
+schema_version: 1
+technique_id: web-server-side-ssrf-blind
+name: Webhook target under tester control
+content: http://<callback-host>/
+target_technology: generic
+technology_versions: []
+injection_context: webhook-url
+encoding: none
+expected_behavior: The callback host receives an HTTP request from the target server when the webhook
+  is triggered. The request method, path, headers, and source address reveal the origin network position
+  and confirm the fetch was issued. Use a distinct hostname or path per test.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://cwe.mitre.org/data/definitions/918.html
+- https://portswigger.net/web-security/ssrf
+source: original
+adapted_from: null
+license: pending-policy-review

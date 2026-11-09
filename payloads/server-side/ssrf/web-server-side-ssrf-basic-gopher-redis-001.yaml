@@ -1,0 +1,23 @@
+id: web-server-side-ssrf-basic-gopher-redis-001
+schema_version: 1
+technique_id: web-server-side-ssrf-basic
+name: gopher scheme single-command interaction
+content: "gopher://<ip>:6379/_PING%0D%0A"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: percent-encoded
+expected_behavior: Substitute the address and port of the line-oriented service under test. Where the client supports the gopher scheme, the request delivers the decoded bytes to the target port, permitting interaction with protocols that accept commands without framing. The response is returned only if the client surfaces gopher replies.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://www.rfc-editor.org/rfc/rfc1436
+  - https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: "pending-policy-review"

@@ -1,0 +1,23 @@
+id: web-server-side-ssrf-basic-loopback-http-001
+schema_version: 1
+technique_id: web-server-side-ssrf-basic
+name: Loopback HTTP service probe
+content: "http://<ip>:80/"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: Substitute a loopback address. A response body from that interface, or an error distinguishable from an unreachable-host error, indicates the fetch reached a local service. Absence of a body does not rule out execution; the response may be discarded.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://cwe.mitre.org/data/definitions/918.html
+  - https://portswigger.net/web-security/ssrf
+source: original
+adapted_from: null
+license: "pending-policy-review"

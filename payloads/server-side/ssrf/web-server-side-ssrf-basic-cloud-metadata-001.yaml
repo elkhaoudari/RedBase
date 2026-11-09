@@ -1,0 +1,39 @@
+id: web-server-side-ssrf-basic-cloud-metadata-001
+schema_version: 1
+technique_id: web-server-side-ssrf-basic
+name: Cloud instance metadata service probe
+content: "http://<metadata-endpoint>/<metadata-path>"
+target_technology: cloud-instance-metadata
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: |
+  Substitute the metadata service endpoint and a provider-specific path for
+  the target platform. Behaviour differs by provider and by configuration.
+
+  Some providers serve metadata on a link-local address over plain HTTP with
+  no additional request requirements. Some require a session token obtained
+  via a separate request before the metadata can be read. Some require a
+  custom request header on every metadata request. Some restrict which paths
+  are readable without additional configuration.
+
+  A response containing metadata content indicates the fetch reached the
+  service and the request was accepted. A response indicating a token or
+  header requirement indicates the service is present but the payload alone
+  is insufficient. A connection refusal or timeout does not establish that
+  the service is absent; it may be firewalled, hosted on a non-default
+  address, or unavailable from the fetch client's network position.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://www.rfc-editor.org/rfc/rfc3927
+  - https://cwe.mitre.org/data/definitions/918.html
+  - https://portswigger.net/web-security/ssrf
+source: original
+adapted_from: null
+license: "pending-policy-review"

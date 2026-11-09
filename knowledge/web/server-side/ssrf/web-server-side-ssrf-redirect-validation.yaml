@@ -1,0 +1,31 @@
+id: web-server-side-ssrf-redirect-validation
+schema_version: 1
+name: SSRF via Redirect Validation Failure
+domain: web
+category: server-side
+subcategory: ssrf
+related_techniques:
+- web-server-side-ssrf-basic
+- web-server-side-ssrf-parser-confusion
+- web-server-side-ssrf-dns-rebinding
+payload_refs:
+- web-server-side-ssrf-redirect-validation-http-3xx-001
+tags:
+- ssrf
+- redirect
+- validation
+- url-fetch
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+source: original
+adapted_from: null
+license: CC-BY-4.0
+description: A permitted destination returns a redirect to an unvalidated internal destination, and the
+  fetch client follows it without re-applying the policy.
+classification:
+  cwe:
+  - CWE-918
+maturity: advanced

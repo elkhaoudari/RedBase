@@ -1,0 +1,36 @@
+id: web-server-side-ssrf-basic
+schema_version: 1
+name: Basic Server-Side Request Forgery
+domain: web
+category: server-side
+subcategory: ssrf
+related_techniques:
+- web-server-side-ssrf-blind
+- web-server-side-ssrf-parser-confusion
+- web-server-side-ssrf-redirect-validation
+- web-server-side-ssrf-dns-rebinding
+payload_refs:
+- web-server-side-ssrf-basic-loopback-http-001
+- web-server-side-ssrf-basic-rfc1918-http-001
+- web-server-side-ssrf-basic-file-scheme-001
+- web-server-side-ssrf-basic-gopher-redis-001
+- web-server-side-ssrf-basic-cloud-metadata-001
+tags:
+- ssrf
+- url-fetch
+- response-visible
+- trust-boundary
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+source: original
+adapted_from: null
+license: CC-BY-4.0
+description: The server fetches a user-controlled destination and returns the response, allowing the requester
+  to read the contents of internal and link-local services.
+classification:
+  cwe:
+  - CWE-918
+maturity: core

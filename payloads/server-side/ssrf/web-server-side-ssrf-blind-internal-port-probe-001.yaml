@@ -1,0 +1,23 @@
+id: web-server-side-ssrf-blind-internal-port-probe-001
+schema_version: 1
+technique_id: web-server-side-ssrf-blind
+name: Internal port reachability by timing
+content: "http://<ip>:<port>/"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: Substitute the address and port under test. Response times differ between a port that accepts a connection and one that refuses immediately. Repeated measurements per port are required; single samples produce false positives from network noise. This is a semi-blind variant — the application does not return the destination's response, but timing leaks whether the connection was accepted.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://portswigger.net/web-security/ssrf/blind
+  - https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: "pending-policy-review"
