@@ -1,0 +1,24 @@
+id: web-sqli-union-based-numeric-context-one-column-001
+schema_version: 1
+technique_id: web-sqli-union-based
+name: UNION numeric-context column probe
+content: '0 UNION SELECT NULL-- '
+target_technology: generic
+technology_versions: []
+injection_context: numeric-expression
+encoding: none
+expected_behavior: Illustrates a UNION probe in a numeric expression context. It is only applicable if
+  the original query structure and column count are compatible.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review

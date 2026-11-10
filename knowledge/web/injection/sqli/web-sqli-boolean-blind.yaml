@@ -1,0 +1,46 @@
+id: web-sqli-boolean-blind
+schema_version: 1
+name: Boolean-Based Blind SQL Injection
+domain: web
+category: injection
+subcategory: sql-injection/boolean-based-blind
+description: SQL injection in which a true or false SQL condition changes an observable application response
+  even though query results or database errors are not directly disclosed.
+classification:
+  cwe:
+  - CWE-89
+  owasp:
+  - A03:2021-Injection
+target_technologies:
+- MySQL/MariaDB
+- PostgreSQL
+- Microsoft SQL Server
+- Oracle Database
+- SQLite
+technology_versions: []
+requirements:
+- An application feature constructs or executes SQL using input influenced by the requester.
+payload_refs:
+- web-sqli-boolean-blind-string-true-001
+- web-sqli-boolean-blind-string-false-001
+- web-sqli-boolean-blind-numeric-true-001
+- web-sqli-boolean-blind-numeric-false-001
+- web-sqli-boolean-blind-and-true-001
+- web-sqli-boolean-blind-and-false-001
+related_techniques:
+- web-sqli-time-blind
+- web-sqli-error-based
+tags:
+- sqli
+- blind
+- boolean
+- response-differential
+maturity: core
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+source: original
+adapted_from: null
+license: CC-BY-4.0

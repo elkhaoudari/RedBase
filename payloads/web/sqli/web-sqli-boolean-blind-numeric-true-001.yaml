@@ -1,0 +1,24 @@
+id: web-sqli-boolean-blind-numeric-true-001
+schema_version: 1
+technique_id: web-sqli-boolean-blind
+name: Numeric-context true predicate
+content: ' AND 1=1'
+target_technology: generic
+technology_versions: []
+injection_context: numeric-expression
+encoding: none
+expected_behavior: A true predicate for a numeric SQL expression context. The leading syntax must match
+  the application's query structure.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review

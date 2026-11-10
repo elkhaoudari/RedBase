@@ -1,0 +1,24 @@
+id: web-sqli-boolean-blind-string-false-001
+schema_version: 1
+technique_id: web-sqli-boolean-blind
+name: String-context false predicate
+content: ''' AND ''1''=''2''-- '
+target_technology: generic
+technology_versions: []
+injection_context: quoted-string
+encoding: none
+expected_behavior: A false predicate intended for a compatible quoted-string context. Response differences
+  must be repeatable and attributable to the condition.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review

@@ -1,0 +1,24 @@
+id: web-sqli-error-based-postgresql-cast-001
+schema_version: 1
+technique_id: web-sqli-error-based
+name: PostgreSQL invalid integer cast probe
+content: ''' AND CAST(''redbase'' AS INTEGER)=1-- '
+target_technology: PostgreSQL
+technology_versions: []
+injection_context: quoted-string
+encoding: none
+expected_behavior: If evaluated in a compatible expression, PostgreSQL may raise an invalid-text-representation
+  error. This is a DBMS-specific diagnostic probe, not a universal payload.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review

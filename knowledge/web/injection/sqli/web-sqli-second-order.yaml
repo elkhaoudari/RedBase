@@ -1,0 +1,43 @@
+id: web-sqli-second-order
+schema_version: 1
+name: Second-Order SQL Injection
+domain: web
+category: injection
+subcategory: sql-injection/second-order
+description: SQL injection in which untrusted input is stored safely or apparently inert at first, then
+  later incorporated into a dynamically constructed SQL statement in another workflow.
+classification:
+  cwe:
+  - CWE-89
+  owasp:
+  - A03:2021-Injection
+target_technologies:
+- MySQL/MariaDB
+- PostgreSQL
+- Microsoft SQL Server
+- Oracle Database
+- SQLite
+technology_versions: []
+requirements:
+- An application feature constructs or executes SQL using input influenced by the requester.
+payload_refs:
+- web-sqli-second-order-quote-canary-001
+- web-sqli-second-order-boolean-canary-001
+- web-sqli-second-order-comment-canary-001
+related_techniques:
+- web-sqli-error-based
+- web-sqli-boolean-blind
+tags:
+- sqli
+- second-order
+- stored-input
+- multi-stage
+maturity: advanced
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+source: original
+adapted_from: null
+license: CC-BY-4.0

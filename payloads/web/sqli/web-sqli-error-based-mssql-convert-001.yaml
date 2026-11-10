@@ -1,0 +1,24 @@
+id: web-sqli-error-based-mssql-convert-001
+schema_version: 1
+technique_id: web-sqli-error-based
+name: SQL Server conversion error probe
+content: ''' AND CONVERT(INT,''redbase'')=1-- '
+target_technology: Microsoft SQL Server
+technology_versions: []
+injection_context: quoted-string
+encoding: none
+expected_behavior: If evaluated in a compatible expression, SQL Server may raise a conversion error. Exact
+  quoting and comment placement depend on the injection context.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review
