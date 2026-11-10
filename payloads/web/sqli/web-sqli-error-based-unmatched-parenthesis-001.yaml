@@ -1,0 +1,24 @@
+id: web-sqli-error-based-unmatched-parenthesis-001
+schema_version: 1
+technique_id: web-sqli-error-based
+name: Unmatched parenthesis syntax probe
+content: ''')'
+target_technology: generic
+technology_versions: []
+injection_context: quoted-string
+encoding: none
+expected_behavior: May disrupt a parenthesized expression. The result depends on the surrounding SQL grammar
+  and should be interpreted only alongside a baseline.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review

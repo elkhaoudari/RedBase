@@ -1,0 +1,24 @@
+id: web-sqli-time-blind-mysql-sleep-3s-001
+schema_version: 1
+technique_id: web-sqli-time-blind
+name: MySQL short delay expression
+content: ''' AND SLEEP(3)-- '
+target_technology: MySQL/MariaDB
+technology_versions: []
+injection_context: quoted-string
+encoding: none
+expected_behavior: Requests a short delay if the expression is evaluated. Query context, server limits,
+  and request timeouts affect observability.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review

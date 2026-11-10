@@ -1,0 +1,24 @@
+id: web-sqli-second-order-comment-canary-001
+schema_version: 1
+technique_id: web-sqli-second-order
+name: Stored comment-syntax canary
+content: 'redbase''-- '
+target_technology: generic
+technology_versions: []
+injection_context: stored-field
+encoding: none
+expected_behavior: A marker for tracing stored input through later SQL construction. Comment behavior
+  is DBMS- and context-dependent.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review

