@@ -1,0 +1,26 @@
+id: web-server-side-ssrf-parser-backslash-001
+schema_version: 1
+technique_id: web-server-side-ssrf-parser-confusion
+name: Backslash in authority position
+content: http://expected.example.com\@<ip>/
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: This is an implementation-specific parser test, not a universally reliable host-confusion
+  payload. URL parsers differ in how they handle backslashes in authority positions. Compare the parsed
+  scheme, authority, hostname, and final network destination in the exact validation and fetch components.
+  Do not assume that the backslash is normalized or treated as a path separator.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://www.rfc-editor.org/rfc/rfc3986
+- https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: pending-policy-review

@@ -1,6 +1,6 @@
 # Payload Standard
 
-Payload content will be added after the repository foundation is accepted.
+Payload records are stored as structured YAML and linked to technique records.
 
 ## Storage model
 
@@ -32,3 +32,16 @@ Payload content will be added after the repository foundation is accepted.
 - `license`
 
 Context and encoding values should be controlled vocabularies where practical, but allow documented extensions for new cases.
+
+## Payload licensing and provenance
+
+- Original RedBase payload records use `CC-BY-4.0` for their authored prose and
+  record structure, consistent with the project's original documentation policy.
+- The payload `content` field is commonly a protocol example or placeholder; cite
+  the relevant standard or technical reference and do not claim ownership of
+  third-party material.
+- Adapted payload records must retain a compatible upstream license, identify
+  the source in `adapted_from`, and include attribution. If redistribution rights
+  are unclear or incompatible, link to the source instead of copying it.
+- `pending-policy-review` is a temporary holding value used by this initial SSRF
+  batch. Resolve it before treating these records as release-ready.

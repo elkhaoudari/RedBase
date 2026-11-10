@@ -1,0 +1,23 @@
+id: web-server-side-ssrf-blind-dns-callback-001
+schema_version: 1
+technique_id: web-server-side-ssrf-blind
+name: DNS-only out-of-band callback
+content: "http://<unique-identifier>.dns.example/"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: An authoritative nameserver under tester control records a resolution for the unique identifier. This confirms name resolution occurred. It does not by itself prove a connection was established, a request was sent, or a response was accepted. Where an HTTP callback is also available, prefer it.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://portswigger.net/web-security/ssrf/blind
+  - https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: "pending-policy-review"

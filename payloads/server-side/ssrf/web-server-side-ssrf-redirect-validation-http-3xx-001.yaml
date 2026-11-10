@@ -1,0 +1,41 @@
+id: web-server-side-ssrf-redirect-validation-http-3xx-001
+schema_version: 1
+technique_id: web-server-side-ssrf-redirect-validation
+name: Redirect to unvalidated internal destination
+content: "https://attacker.example.com/redirect?url=http://<ip>/"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: |
+  The first request is sent to a permitted host under tester control. That host
+  responds with a 3xx status and a Location header pointing at the substituted
+  internal destination.
+
+  Whether this is exploitable depends on three properties of the fetch client:
+
+  - whether it follows redirects at all;
+  - whether it re-validates the destination of the redirect against the same
+    policy applied to the original URL;
+  - whether it preserves properties the policy depends on (Host header,
+    scheme) across the redirect.
+
+  A successful request to the internal destination — evidenced by a callback,
+  a response body, a timing difference, or a side effect — indicates the policy
+  was not re-applied after the redirect. Absence of evidence does not disprove
+  the vulnerability; the internal service may have been unreachable from the
+  fetch client's network position.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://portswigger.net/web-security/ssrf
+  - https://cwe.mitre.org/data/definitions/918.html
+  - https://www.rfc-editor.org/rfc/rfc9110
+source: original
+adapted_from: null
+license: "pending-policy-review"

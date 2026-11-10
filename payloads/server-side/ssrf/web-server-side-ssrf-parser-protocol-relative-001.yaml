@@ -1,0 +1,25 @@
+id: web-server-side-ssrf-parser-protocol-relative-001
+schema_version: 1
+technique_id: web-server-side-ssrf-parser-confusion
+name: Protocol-relative reference
+content: //<ip>/
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: A protocol-relative reference inherits its scheme from a base URI. It is not necessarily
+  a complete URL when supplied to a standalone HTTP client. Test only in a context that resolves references
+  against a known base URI, and compare how the validator and fetch client resolve it.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://www.rfc-editor.org/rfc/rfc3986
+- https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: pending-policy-review

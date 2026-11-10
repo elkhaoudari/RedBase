@@ -1,0 +1,40 @@
+id: web-server-side-ssrf-parser-confusion
+schema_version: 1
+name: SSRF via URL Parser Confusion
+domain: web
+category: server-side
+subcategory: ssrf
+related_techniques:
+- web-server-side-ssrf-basic
+- web-server-side-ssrf-blind
+- web-server-side-ssrf-redirect-validation
+- web-server-side-ssrf-dns-rebinding
+payload_refs:
+- web-server-side-ssrf-parser-userinfo-001
+- web-server-side-ssrf-parser-ipv6-mapped-001
+- web-server-side-ssrf-parser-decimal-001
+- web-server-side-ssrf-parser-octal-001
+- web-server-side-ssrf-parser-hex-001
+- web-server-side-ssrf-parser-short-form-ipv4-001
+- web-server-side-ssrf-parser-backslash-001
+- web-server-side-ssrf-parser-protocol-relative-001
+tags:
+- ssrf
+- parser-differential
+- allowlist-bypass
+- url-fetch
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+source: original
+adapted_from: null
+license: CC-BY-4.0
+description: The validator and the fetch client interpret the URL's authority component differently, so
+  a value that appears to target an allowed host resolves to a forbidden destination.
+classification:
+  cwe:
+  - CWE-918
+  - CWE-436
+maturity: advanced

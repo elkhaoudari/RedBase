@@ -1,0 +1,23 @@
+id: web-server-side-ssrf-basic-rfc1918-http-001
+schema_version: 1
+technique_id: web-server-side-ssrf-basic
+name: Private range HTTP probe
+content: "http://<ip>/"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: Substitute an address in a private range. A response from that address indicates the server can reach an internal network segment. Vary the substituted address across private ranges and compare responses to distinguish reachable from unreachable destinations.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://www.rfc-editor.org/rfc/rfc1918
+  - https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: "pending-policy-review"

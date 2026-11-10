@@ -1,0 +1,23 @@
+id: web-server-side-ssrf-blind-http-callback-001
+schema_version: 1
+technique_id: web-server-side-ssrf-blind
+name: HTTP out-of-band callback
+content: "http://<unique-identifier>.oob.example/"
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: The listener receives an HTTP request from the target server. The request method, path, headers, and source address confirm the fetch executed and identify the network position it originated from. Use a distinct identifier per injection point.
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+  - https://portswigger.net/web-security/ssrf/blind
+  - https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: "pending-policy-review"

@@ -1,0 +1,27 @@
+id: web-server-side-ssrf-parser-short-form-ipv4-001
+schema_version: 1
+technique_id: web-server-side-ssrf-parser-confusion
+name: Short-form IPv4 host
+content: http://<short-form-ip>/
+target_technology: generic
+technology_versions: []
+injection_context: url-parameter
+encoding: none
+expected_behavior: 'Some legacy or implementation-specific host parsers accept IPv4 addresses with fewer
+  than four components. The interpretation is parser-dependent: the final component may represent the
+  remaining address bits, rather than the omitted components simply being padded with zero. RFC 3986 does
+  not establish universal acceptance of these forms. Test against the exact validator and fetch client
+  in scope.'
+waf_bypass_for: []
+related_payload: null
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+references:
+- https://www.rfc-editor.org/rfc/rfc3986
+- https://cwe.mitre.org/data/definitions/918.html
+source: original
+adapted_from: null
+license: pending-policy-review

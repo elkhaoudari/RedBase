@@ -1,0 +1,32 @@
+id: web-server-side-ssrf-dns-rebinding
+schema_version: 1
+name: SSRF via DNS Rebinding
+domain: web
+category: server-side
+subcategory: ssrf
+related_techniques:
+- web-server-side-ssrf-basic
+- web-server-side-ssrf-parser-confusion
+- web-server-side-ssrf-redirect-validation
+payload_refs:
+- web-server-side-ssrf-dns-rebinding-hostname-placeholder-001
+tags:
+- ssrf
+- dns-rebinding
+- toctou
+- url-fetch
+review:
+  status: unverified
+  last_tested: null
+  tested_against: []
+  evidence: []
+source: original
+adapted_from: null
+license: CC-BY-4.0
+description: The hostname resolves to an allowed address at validation time and to a forbidden address
+  at fetch time, exploiting separate resolutions rather than URL parser disagreement.
+classification:
+  cwe:
+  - CWE-918
+  - CWE-367
+maturity: advanced
